@@ -7,7 +7,6 @@ require (
 	github.com/google/uuid v1.1.0
 	github.com/grpc-ecosystem/go-grpc-middleware v1.0.0
 	github.com/grpc-ecosystem/grpc-gateway v1.7.0
-	github.com/infobloxopen/atlas-app-toolkit v0.16.2
 	github.com/jinzhu/gorm v1.9.2
 	github.com/jinzhu/inflection v0.0.0-20180308033659-04140366298a
 	github.com/lib/pq v1.0.0

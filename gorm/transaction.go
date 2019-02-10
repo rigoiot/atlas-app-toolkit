@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"sync"
 
-	"github.com/infobloxopen/atlas-app-toolkit/rpc/errdetails"
+	"github.com/rigoiot/atlas-app-toolkit/rpc/errdetails"
 	"github.com/jinzhu/gorm"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"

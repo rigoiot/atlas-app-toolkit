@@ -12,8 +12,8 @@ import (
 
 	"errors"
 
-	"github.com/infobloxopen/atlas-app-toolkit/gateway"
-	"github.com/infobloxopen/atlas-app-toolkit/health"
+	"github.com/rigoiot/atlas-app-toolkit/gateway"
+	"github.com/rigoiot/atlas-app-toolkit/health"
 	"google.golang.org/grpc"
 )
 

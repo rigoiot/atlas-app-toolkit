@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/DATA-DOG/go-sqlmock"
-	"github.com/infobloxopen/atlas-app-toolkit/rpc/errdetails"
+	"github.com/rigoiot/atlas-app-toolkit/rpc/errdetails"
 	"github.com/jinzhu/gorm"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
