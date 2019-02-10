@@ -8,12 +8,11 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"google.golang.org/grpc/transport"
 )
 
 // DummyContextWithServerTransportStream returns a dummy context for testing.
 func DummyContextWithServerTransportStream() context.Context {
-	expectedStream := &transport.Stream{}
+	expectedStream := grpc.ServerTransportStreamFromContext(context.Background())
 	return grpc.NewContextWithServerTransportStream(context.Background(), expectedStream)
 }
 

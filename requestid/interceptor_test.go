@@ -6,7 +6,6 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
-	"google.golang.org/grpc/transport"
 )
 
 type testRequest struct{}
@@ -14,7 +13,7 @@ type testRequest struct{}
 type testResponse struct{}
 
 func DummyContextWithServerTransportStream() context.Context {
-	expectedStream := &transport.Stream{}
+	expectedStream := grpc.ServerTransportStreamFromContext(context.Background())
 	return grpc.NewContextWithServerTransportStream(context.Background(), expectedStream)
 }
 
