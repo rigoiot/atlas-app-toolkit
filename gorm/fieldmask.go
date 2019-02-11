@@ -6,12 +6,12 @@ import (
 	"reflect"
 	"strings"
 
-	fieldmask "google.golang.org/genproto/protobuf/field_mask"
+	ptypes "github.com/gogo/protobuf/types"
 )
 
 // MergeWithMask will take the fields of `source` that are included as
 // paths in `mask` and write them to the corresponding fields of `dest`
-func MergeWithMask(source, dest interface{}, mask *fieldmask.FieldMask) error {
+func MergeWithMask(source, dest interface{}, mask *ptypes.FieldMask) error {
 	if mask == nil || len(mask.Paths) == 0 {
 		return nil
 	}

@@ -9,8 +9,8 @@ import (
 	"strings"
 	"testing"
 
+	ptypes "github.com/gogo/protobuf/types"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
-	"google.golang.org/genproto/protobuf/field_mask"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
 )
@@ -63,7 +63,7 @@ func TestAnnotator(t *testing.T) {
 }
 
 type dummyReq struct {
-	SomeFieldMaskField *field_mask.FieldMask
+	SomeFieldMaskField *ptypes.FieldMask
 }
 
 type testReqWithoutFieldMask struct {
@@ -92,7 +92,7 @@ func TestUnaryServerInterceptor(t *testing.T) {
 		if req == nil {
 			t.Fatal("For some reason it deleted the request object")
 		}
-		got, want := req.SomeFieldMaskField, &field_mask.FieldMask{Paths: []string{"one.two.three", "one.four"}}
+		got, want := req.SomeFieldMaskField, &ptypes.FieldMask{Paths: []string{"one.two.three", "one.four"}}
 		if !reflect.DeepEqual(got, want) {
 			t.Errorf("Didn't properly set the fieldmask in the request.\ngot :%v\nwant:%v", got, want)
 		}
@@ -111,14 +111,14 @@ func TestUnaryServerInterceptor(t *testing.T) {
 		if req == nil {
 			t.Fatal("For some reason it deleted the request object")
 		}
-		got, want := req.SomeFieldMaskField, &field_mask.FieldMask{Paths: nil}
+		got, want := req.SomeFieldMaskField, &ptypes.FieldMask{Paths: nil}
 		if !reflect.DeepEqual(got, want) {
 			t.Errorf("Didn't properly set the fieldmask in the request.\ngot :%v\nwant:%v", got, want)
 		}
 	})
 	t.Run("doesn't set FieldMask if not nil", func(t *testing.T) {
 		// Test with good (but arbitrary) metadata, but a present field to not overwrite
-		req := &dummyReq{SomeFieldMaskField: &field_mask.FieldMask{Paths: []string{}}}
+		req := &dummyReq{SomeFieldMaskField: &ptypes.FieldMask{Paths: []string{}}}
 		err := interceptor(ctx, "POST", req, nil, nil, dummyInvoker)
 		if req == nil {
 			t.Error("For some reason it deleted the request object")
@@ -126,7 +126,7 @@ func TestUnaryServerInterceptor(t *testing.T) {
 		if err != nil {
 			t.Error(err.Error())
 		}
-		if !reflect.DeepEqual(req.SomeFieldMaskField, &field_mask.FieldMask{Paths: []string{}}) {
+		if !reflect.DeepEqual(req.SomeFieldMaskField, &ptypes.FieldMask{Paths: []string{}}) {
 			t.Error("Wasn't supposed to alter fieldmask in request but did")
 		}
 	})

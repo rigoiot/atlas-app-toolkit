@@ -3,6 +3,7 @@ module github.com/rigoiot/atlas-app-toolkit
 require (
 	github.com/DATA-DOG/go-sqlmock v1.3.0
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
+	github.com/gogo/protobuf v1.2.0
 	github.com/golang/protobuf v1.2.0
 	github.com/google/uuid v1.1.0
 	github.com/grpc-ecosystem/go-grpc-middleware v1.0.0

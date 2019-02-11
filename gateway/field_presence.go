@@ -9,8 +9,8 @@ import (
 	"reflect"
 	"strings"
 
+	ptypes "github.com/gogo/protobuf/types"
 	"github.com/golang/protobuf/protoc-gen-go/generator"
-	"google.golang.org/genproto/protobuf/field_mask"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
 )
@@ -105,7 +105,7 @@ func PresenceClientInterceptor() grpc.UnaryClientInterceptor {
 		if !found {
 			return
 		}
-		fieldMask := &field_mask.FieldMask{Paths: paths}
+		fieldMask := &ptypes.FieldMask{Paths: paths}
 
 		// If a field with type *FieldMask exists, set the paths in it
 		t := reflect.ValueOf(req)
