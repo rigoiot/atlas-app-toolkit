@@ -8,6 +8,9 @@ PROJECT_ROOT = $(CURDIR)
 # https://github.com/infobloxopen/atlas-gentool
 GENTOOL_IMAGE := infoblox/atlas-gentool:latest
 
+# Path for tools
+BINDIR	:= bin
+
 .PHONY: default
 default: test
 
@@ -21,9 +24,15 @@ vendor:
 check-fmt:
 	test -z `go fmt ./...`
 
-.gen-query:
-	docker run --rm -v $(PROJECT_ROOT):/go/src/$(REPO) $(GENTOOL_IMAGE) \
-	--go_out=:. $(REPO)/query/collection_operators.proto
+$(BINDIR)/gogofast:
+	@echo "--> building $@"
+	@go build -o $@ github.com/gogo/protobuf/protoc-gen-gogofast
+
+.gen-query: $(BINDIR)/gogofast
+	protoc -I. \
+	-I$(shell go list -f '{{ .Dir }}' -m github.com/grpc-ecosystem/grpc-gateway) \
+	--plugin=protoc-gen-gogofast=$(BINDIR)/gogofast --gogofast_out=paths=source_relative:. \
+	query/collection_operators.proto
 
 .gen-errdetails:
 	docker run --rm -v $(PROJECT_ROOT):/go/src/$(REPO) $(GENTOOL_IMAGE) \
