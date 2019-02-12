@@ -24,9 +24,9 @@ message SortCriteria {
 message Sorting {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         json_schema: {
-            type: STRING;
-            description: "atlas.api.sorting";
-        };
+            type: STRING,
+            description: "atlas.api.sorting"
+        }
     };
 
     repeated SortCriteria criterias = 1;
@@ -38,9 +38,9 @@ message Sorting {
 message FieldSelection {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         json_schema: {
-            type: STRING;
-            description: "atlas.api.field_selection";
-        };
+            type: STRING,
+            description: "atlas.api.field_selection"
+        }
     };
     map<string, Field> fields = 1;
 }
@@ -58,9 +58,9 @@ message Field {
 message Filtering {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         json_schema: {
-            type: STRING;
-            description: "atlas.api.filtering";
-        };
+            type: STRING,
+            description: "atlas.api.filtering"
+        }
     };
 
 
@@ -187,9 +187,9 @@ message NumberArrayCondition {
 message Pagination {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         json_schema: {
-            type: STRING;
-            description: "atlas.api.paging";
-        };
+            type: STRING,
+            description: "atlas.api.paging"
+        }
     };
 
     // The service-defined string used to identify a page of resources.
