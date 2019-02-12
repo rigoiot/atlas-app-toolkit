@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package infoblox.api;
 
-// import "protoc-gen-swagger/options/annotations.proto";
+import "protoc-gen-swagger/options/annotations.proto";
 
 option go_package = "github.com/rigoiot/atlas-app-toolkit/query;query";
 
@@ -22,12 +22,12 @@ message SortCriteria {
 
 // Sorting represents list of sort criterias.
 message Sorting {
-    // option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
-    //     json_schema: {
-    //         type: STRING;
-    //         description: "atlas.api.sorting";
-    //     };
-    // };
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            type: STRING;
+            description: "atlas.api.sorting";
+        };
+    };
 
     repeated SortCriteria criterias = 1;
 }
@@ -36,12 +36,12 @@ message Sorting {
 // Main use case for if is to store information about object fields that
 // need to be ratained prior to sending object as a response
 message FieldSelection {
-    // option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
-    //     json_schema: {
-    //         type: STRING;
-    //         description: "atlas.api.field_selection";
-    //     };
-    // };
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            type: STRING;
+            description: "atlas.api.field_selection";
+        };
+    };
     map<string, Field> fields = 1;
 }
 
@@ -56,12 +56,12 @@ message Field {
 // Filtering represents filtering expression.
 // root could be either LogicalOperator or one of the supported conditions.
 message Filtering {
-    // option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
-    //     json_schema: {
-    //         type: STRING;
-    //         description: "atlas.api.filtering";
-    //     };
-    // };
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            type: STRING;
+            description: "atlas.api.filtering";
+        };
+    };
 
 
     oneof root {
@@ -185,12 +185,12 @@ message NumberArrayCondition {
 // Client-driven pagination is a model in which rows are addressable by
 // offset and page size (limit).
 message Pagination {
-    // option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
-    //     json_schema: {
-    //         type: STRING;
-    //         description: "atlas.api.paging";
-    //     };
-    // };
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            type: STRING;
+            description: "atlas.api.paging";
+        };
+    };
 
     // The service-defined string used to identify a page of resources.
     // A null value indicates the first page.
