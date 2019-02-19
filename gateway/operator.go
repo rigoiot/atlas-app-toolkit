@@ -49,7 +49,7 @@ func SetPageInfo(ctx context.Context, p *query.PageInfo) error {
 		m[pageInfoOffsetMetaKey] = strconv.FormatUint(uint64(o), 10)
 	}
 
-	if s := p.GetSize(); s != 0 {
+	if s := p.GetSize_(); s != 0 {
 		m[pageInfoSizeMetaKey] = strconv.FormatUint(uint64(s), 10)
 	}
 

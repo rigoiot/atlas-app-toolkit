@@ -8,7 +8,7 @@ import (
 
 func TestUnsetOp(t *testing.T) {
 	page := new(query.PageInfo)
-	res := &testResponse{PageInfo: &query.PageInfo{Offset: 30, Size: 10}}
+	res := &testResponse{PageInfo: &query.PageInfo{Offset: 30, Size_: 10}}
 
 	if err := unsetOp(res, page); err != nil {
 		t.Fatalf("unexpected error: %s", err)
@@ -17,8 +17,8 @@ func TestUnsetOp(t *testing.T) {
 	if page.GetOffset() != 30 {
 		t.Errorf("invalid repsponse offset: %d - expected: 30", page.GetOffset())
 	}
-	if page.GetSize() != 10 {
-		t.Errorf("invalid repsponse size: %d - expected: 10", page.GetSize())
+	if page.GetSize_() != 10 {
+		t.Errorf("invalid repsponse size: %d - expected: 10", page.GetSize_())
 	}
 
 	// nil operator
