@@ -39,6 +39,12 @@ func GetValidationError(err error) error {
 				cause:  causeErr.Cause(),
 			}
 		}
+		return ValidationError{
+			field:  vErr.Field(),
+			reason: vErr.Reason(),
+			key:    vErr.Key(),
+			cause:  vErr.Cause(),
+		}
 	}
 	return err
 }
